@@ -7,6 +7,7 @@ from passlib.hash import sha256_crypt  # Make sure this import is present
 from datetime import datetime
 import hashlib
 
+##myapp
 
 app = Flask(__name__)
 app.secret_key = 'abla bla key bbdd'
