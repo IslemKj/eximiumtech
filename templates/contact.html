@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - EximiumTech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">eximiumTech</div>
+            <ul class="nav-links">
+                <li><a href="{{url_for('index')}}" data-en="Home" data-fr="Accueil">Home</a></li>
+                <li><a href="{{url_for('services')}}" data-en="Services" data-fr="Services">Services</a></li>
+                <li><a href="{{url_for('about')}}" data-en="About" data-fr="À Propos">About</a></li>
+                <li><a href="{{url_for('contact')}}" data-en="Contact" data-fr="Contact">Contact</a></li>
+                <li><a href="{{url_for('projects')}}" data-en="Projects" data-fr="Projets">Projects</a></li>
+            </ul>
+            <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">FR</button>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Header -->
+            <div class="contact-header">
+                <h1 data-en="Get In Touch" data-fr="Contactez-Nous">Get In Touch</h1>
+                <p data-en="Ready to transform your business with cutting-edge digital solutions? Let's discuss your project and bring your vision to life." data-fr="Prêt à transformer votre entreprise avec des solutions numériques de pointe ? Discutons de votre projet et donnons vie à votre vision.">Ready to transform your business with cutting-edge digital solutions? Let's discuss your project and bring your vision to life.</p>
+            </div>
+
+            <!-- Contact Content -->
+            <div class="contact-content">
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="message" id="messageDiv"></div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" data-en="First Name *" data-fr="Prénom *">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" data-en="Last Name *" data-fr="Nom *">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" data-en="Email Address *" data-fr="Adresse Email *">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" data-en="Phone Number" data-fr="Numéro de Téléphone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company" data-en="Company Name" data-fr="Nom de l'Entreprise">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service" data-en="Service Interested In *" data-fr="Service d'Intérêt *">Service Interested In *</label>
+                            <select id="service" name="service" required>
+                                <option value="" data-en="Select a service" data-fr="Sélectionnez un service">Select a service</option>
+                                <option value="web-development" data-en="Web Development" data-fr="Développement Web">Web Development</option>
+                                <option value="mobile-apps" data-en="Mobile Applications" data-fr="Applications Mobiles">Mobile Applications</option>
+                                <option value="ai-solutions" data-en="AI Solutions (MLaaS)" data-fr="Solutions IA (MLaaS)">AI Solutions (MLaaS)</option>
+                                <option value="saas-development" data-en="SaaS Development" data-fr="Développement SaaS">SaaS Development</option>
+                                <option value="custom-software" data-en="Custom Software" data-fr="Logiciels Personnalisés">Custom Software</option>
+                                <option value="consulting" data-en="Technical Consulting" data-fr="Conseil Technique">Technical Consulting</option>
+                                <option value="other" data-en="Other" data-fr="Autre">Other</option>
+                            </select>
+                        </div>
+
+                        <!--<div class="form-group">
+                            <label for="budget" data-en="Project Budget" data-fr="Budget du Projet">Project Budget</label>
+                            <select id="budget" name="budget">
+                                <option value="" data-en="Select budget range" data-fr="Sélectionnez une fourchette budgétaire">Select budget range</option>
+                                <option value="under-5k" data-en="Under $5,000" data-fr="Moins de 5 000$">Under $5,000</option>
+                                <option value="5k-15k" data-en="$5,000 - $15,000" data-fr="5 000$ - 15 000$">$5,000 - $15,000</option>
+                                <option value="15k-50k" data-en="$15,000 - $50,000" data-fr="15 000$ - 50 000$">$15,000 - $50,000</option>
+                                <option value="50k-plus" data-en="$50,000+" data-fr="50 000$+">$50,000+</option>
+                            </select>
+                        </div>-->
+
+                        <div class="form-group">
+                            <label for="timeline" data-en="Project Timeline" data-fr="Délai du Projet">Project Timeline</label>
+                            <select id="timeline" name="timeline">
+                                <option value="" data-en="Select timeline" data-fr="Sélectionnez un délai">Select timeline</option>
+                                <option value="asap" data-en="ASAP" data-fr="Dès que possible">ASAP</option>
+                                <option value="1-3-months" data-en="1-3 months" data-fr="1-3 mois">1-3 months</option>
+                                <option value="3-6-months" data-en="3-6 months" data-fr="3-6 mois">3-6 months</option>
+                                <option value="6-months-plus" data-en="6+ months" data-fr="6+ mois">6+ months</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" data-en="Project Details *" data-fr="Détails du Projet *">Project Details *</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your project, goals, and requirements..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn" data-en="Send Message" data-fr="Envoyer le Message">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <div class="info-icon">📧</div>
+                            <h3 data-en="Email Us" data-fr="Nous Écrire">Email Us</h3>
+                        </div>
+                        <p data-en="Get in touch via email" data-fr="Contactez-nous par email">Get in touch via email</p>
+                        <a href="mailto:contact@eximiumtech.com">contact@eximiumtech.com</a>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <div class="info-icon">💬</div>
+                            <h3 data-en="Live Chat" data-fr="Chat en Direct">Live Chat</h3>
+                        </div>
+                        <p data-en="Chat with our team for immediate assistance" data-fr="Discutez avec notre équipe pour une assistance immédiate">Chat with our team for immediate assistance</p>
+                        <a href="#" data-en="Start Chat" data-fr="Démarrer le Chat">Start Chat</a>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <div class="info-icon">📅</div>
+                            <h3 data-en="Schedule Call" data-fr="Planifier un Appel">Schedule Call</h3>
+                        </div>
+                        <p data-en="Book a free consultation call" data-fr="Réservez un appel de consultation gratuit">Book a free consultation call</p>
+                        <a href="#" data-en="Book Meeting" data-fr="Réserver une Réunion">Book Meeting</a>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <div class="info-icon">🕒</div>
+                            <h3 data-en="Response Time" data-fr="Temps de Réponse">Response Time</h3>
+                        </div>
+                        <p data-en="We typically respond within 24 hours during business days" data-fr="Nous répondons généralement dans les 24 heures pendant les jours ouvrables">We typically respond within 24 hours during business days</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h2 class="faq-title" data-en="Frequently Asked Questions" data-fr="Questions Fréquemment Posées">Frequently Asked Questions</h2>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4 data-en="How long does a typical project take?" data-fr="Combien de temps prend un projet typique ?">How long does a typical project take?</h4>
+                        <p data-en="Project timelines vary based on complexity and scope. Simple websites take 2-4 weeks, while complex applications can take 3-6 months. We'll provide a detailed timeline during our initial consultation." data-fr="Les délais de projet varient selon la complexité et l'envergure. Les sites simples prennent 2-4 semaines, tandis que les applications complexes peuvent prendre 3-6 mois. Nous fournirons un calendrier détaillé lors de notre consultation initiale.">Project timelines vary based on complexity and scope. Simple websites take 2-4 weeks, while complex applications can take 3-6 months. We'll provide a detailed timeline during our initial consultation.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 data-en="What's included in your services?" data-fr="Qu'est-ce qui est inclus dans vos services ?">What's included in your services?</h4>
+                        <p data-en="Our services include complete project development, testing, deployment, and post-launch support. We also provide documentation, training, and ongoing maintenance options." data-fr="Nos services incluent le développement complet du projet, les tests, le déploiement et le support post-lancement. Nous fournissons également la documentation, la formation et les options de maintenance continue.">Our services include complete project development, testing, deployment, and post-launch support. We also provide documentation, training, and ongoing maintenance options.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 data-en="Do you provide ongoing support?" data-fr="Fournissez-vous un support continu ?">Do you provide ongoing support?</h4>
+                        <p data-en="Yes, we offer various support packages including bug fixes, updates, security patches, and feature enhancements. Our support ensures your digital solutions remain current and secure." data-fr="Oui, nous offrons divers packages de support incluant les corrections de bugs, les mises à jour, les correctifs de sécurité et les améliorations de fonctionnalités. Notre support assure que vos solutions numériques restent actuelles et sécurisées.">Yes, we offer various support packages including bug fixes, updates, security patches, and feature enhancements. Our support ensures your digital solutions remain current and secure.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 data-en="Can you work with our existing systems?" data-fr="Pouvez-vous travailler avec nos systèmes existants ?">Can you work with our existing systems?</h4>
+                        <p data-en="Absolutely! We specialize in integrating new solutions with existing systems, databases, and third-party services. We ensure seamless data migration and system compatibility." data-fr="Absolument ! Nous nous spécialisons dans l'intégration de nouvelles solutions avec les systèmes existants, bases de données et services tiers. Nous assurons une migration de données transparente et la compatibilité des systèmes.">Absolutely! We specialize in integrating new solutions with existing systems, databases, and third-party services. We ensure seamless data migration and system compatibility.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+        <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo">eximiumTech</div>
+                        <p data-en="Transforming businesses through digital innovation and cutting-edge technology solutions." data-fr="Transformer les entreprises grâce à l'innovation numérique et aux solutions technologiques de pointe.">Transforming businesses through digital innovation and cutting-edge technology solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Services" data-fr="Services">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="{{url_for('services')}}" data-en="Web Development" data-fr="Développement Web">Web Development</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="Mobile Apps" data-fr="Applications Mobiles">Mobile Apps</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="AI Solutions" data-fr="Solutions IA">AI Solutions</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="SaaS Development" data-fr="Développement SaaS">SaaS Development</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="Custom Software" data-fr="Logiciels Personnalisés">Custom Software</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Company" data-fr="Entreprise">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="{{url_for('about')}}" data-en="About Us" data-fr="À Propos">About Us</a></li>
+                        <li><a href="{{url_for('projects')}}" data-en="Portfolio" data-fr="Portfolio">Portfolio</a></li>
+                        <!--<li><a href="#" data-en="Careers" data-fr="Carrières">Careers</a></li>-->
+                        <li><a href="{{url_for('contact')}}" data-en="Contact" data-fr="Contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Connect With Us" data-fr="Nous Suivre">Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/eximiumtech" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:eximiumkj@gmail.com" class="social-link email">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                        <a href="tel:+213550450402" class="social-link phone">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong data-en="Email:" data-fr="Email :">Email:</strong> eximiumkj@gmail.com</p>
+                        <p><strong data-en="Phone:" data-fr="Téléphone :">Phone:</strong> +447385763427 | +213550450402</p>
+                        <p><strong data-en="Location:" data-fr="Localisation :">Location:</strong> <span data-en="Global Remote Services" data-fr="Services à Distance Mondiaux">Global Remote Services</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p data-en="© 2024 EximiumTech. All rights reserved." data-fr="© 2024 EximiumTech. Tous droits réservés.">© 2024 EximiumTech. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#" data-en="Privacy Policy" data-fr="Politique de Confidentialité">Privacy Policy</a>
+                        <a href="#" data-en="Terms of Service" data-fr="Conditions d'Utilisation">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize EmailJS
+        (function(){
+            emailjs.init("lQFYhnSOIqQPnwBkn"); // Your public key
+        })();
+
+        // Language Toggle
+        let currentLang = 'en';
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            updateLanguage();
+        }
+        
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-en][data-fr]');
+            elements.forEach(el => {
+                if (el.tagName === 'OPTION') {
+                    el.textContent = el.getAttribute(`data-${currentLang}`);
+                } else if (el.hasAttribute('placeholder')) {
+                    el.placeholder = el.getAttribute(`data-${currentLang}`);
+                } else {
+                    el.textContent = el.getAttribute(`data-${currentLang}`);
+                }
+            });
+            
+            // Update placeholder for textarea
+            const textarea = document.getElementById('message');
+            if (currentLang === 'fr') {
+                textarea.placeholder = "Parlez-nous de votre projet, vos objectifs et exigences...";
+            } else {
+                textarea.placeholder = "Tell us about your project, goals, and requirements...";
+            }
+            
+            document.getElementById('langBtn').textContent = currentLang === 'en' ? 'FR' : 'EN';
+            document.documentElement.lang = currentLang;
+        }
+
+        // Form Handling with EmailJS
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const messageDiv = document.getElementById('messageDiv');
+            const submitBtn = document.querySelector('.submit-btn');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = currentLang === 'en' ? 'Sending...' : 'Envoi en cours...';
+            
+            // Clear any previous messages
+            messageDiv.style.display = 'none';
+            
+            // Get form data
+            const formData = new FormData(this);
+            const fullName = `${formData.get('firstName')} ${formData.get('lastName')}`;
+            const currentTime = new Date().toLocaleString();
+            
+            const templateParams = {
+                name: fullName,
+                email: formData.get('email'),
+                phone: formData.get('phone') || 'Not provided',
+                company: formData.get('company') || 'Not provided',
+                service: formData.get('service'),
+                budget: formData.get('budget') || 'Not specified',
+                timeline: formData.get('timeline') || 'Not specified',
+                message: formData.get('message'),
+                time: currentTime,
+                reply_to: formData.get('email')
+            };
+
+            // Send email using EmailJS
+            emailjs.send('service_uboow7d', 'template_wm7zbp6', templateParams)
+                .then((response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success message
+                    messageDiv.className = 'message success';
+                    messageDiv.style.display = 'block';
+                    messageDiv.innerHTML = currentLang === 'en' 
+                        ? '✅ Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.'
+                        : '✅ Merci ! Votre message a été envoyé avec succès. Nous vous répondrons dans les 24 heures.';
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Scroll to message
+                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Hide message after 10 seconds
+                    setTimeout(() => {
+                        messageDiv.style.display = 'none';
+                    }, 10000);
+                })
+                .catch((error) => {
+                    console.error('FAILED...', error);
+                    
+                    // Show error message
+                    messageDiv.className = 'message error';
+                    messageDiv.style.display = 'block';
+                    messageDiv.innerHTML = currentLang === 'en' 
+                        ? '❌ Sorry, there was an error sending your message. Please try again or contact us directly at eximiumkj@gmail.com'
+                        : '❌ Désolé, il y a eu une erreur lors de l\'envoi de votre message. Veuillez réessayer ou nous contacter directement à eximiumkj@gmail.com';
+                    
+                    // Scroll to message
+                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = currentLang === 'en' ? 'Send Message' : 'Envoyer le Message';
+                });
+        });
+
+        // Form validation
+        document.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+            field.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.style.borderColor = 'var(--error, #ef4444)';
+                } else {
+                    this.style.borderColor = '#E5E7EB';
+                }
+            });
+        });
+
+        // Email validation
+        document.getElementById('email').addEventListener('blur', function() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (this.value && !emailRegex.test(this.value)) {
+                this.style.borderColor = 'var(--error, #ef4444)';
+            } else if (this.value) {
+                this.style.borderColor = 'var(--success, #10b981)';
+            }
+        });
+
+        // Initialize
+        updateLanguage();
+    </script>
+
+    <style>
+        /* Additional styles for message display */
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .message.success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        
+        .message.error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+</body>
+</html>

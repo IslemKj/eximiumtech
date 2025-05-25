@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - EximiumTech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #4A90E2 0%, #2E5BBA 100%);
+            --primary-light: #6BA3F0;
+            --primary-dark: #1E3A8A;
+            --text-primary: #1A1A1A;
+            --text-secondary: #666666;
+            --white: #FFFFFF;
+            --light-bg: #F8FAFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        .lang-switch {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .lang-switch:hover {
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--primary-gradient);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="white" stop-opacity="0.1"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="300" cy="700" r="120" fill="url(%23a)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s ease forwards 0.3s;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            opacity: 0.9;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s ease forwards 0.6s;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Story Section */
+        .story {
+            background: white;
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .story-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .story-image {
+            position: relative;
+        }
+
+        .story-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            background: var(--primary-gradient);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .story-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Mission & Values */
+        .mission-values {
+            background: var(--light-bg);
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .mv-card .icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2.5rem;
+        }
+
+        .mv-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .mv-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Team Section */
+        .team {
+            background: white;
+        }
+
+        .team-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .team-member {
+            background: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .member-role {
+            color: var(--primary-light);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .member-bio {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Approach Section */
+        .approach {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .approach-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .approach-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .approach-item h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .approach-item p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Technologies Section */
+        .technologies {
+            background: var(--light-bg);
+        }
+
+        .tech-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .tech-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-category h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tech-category .icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tech-tag {
+            background: var(--light-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            border-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .story-content,
+            .mv-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .story-image {
+                order: -1;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">eximiumTech</div>
+            <ul class="nav-links">
+                <li><a href="{{url_for('index')}}" data-en="Home" data-fr="Accueil">Home</a></li>
+                <li><a href="{{url_for('services')}}" data-en="Services" data-fr="Services">Services</a></li>
+                <li><a href="{{url_for('about')}}" data-en="About" data-fr="À Propos">About</a></li>
+                <li><a href="{{url_for('contact')}}" data-en="Contact" data-fr="Contact">Contact</a></li>
+                <li><a href="{{url_for('projects')}}" data-en="Projects" data-fr="Projets">Projects</a></li>
+            </ul>
+            <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">FR</button>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-en="About EximiumTech" data-fr="À Propos d'EximiumTech">About EximiumTech</h1>
+            <p data-en="Pioneering digital transformation through innovative technology solutions and exceptional client partnerships" data-fr="Pionnier de la transformation numérique grâce à des solutions technologiques innovantes et des partenariats clients exceptionnels">Pioneering digital transformation through innovative technology solutions and exceptional client partnerships</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="section story animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title" data-en="Our Story" data-fr="Notre Histoire">Our Story</h2>
+            <div class="story-content">
+                <div class="story-text">
+                    <p data-en="Founded with a vision to bridge the gap between cutting-edge technology and business success, EximiumTech emerged from a passion for creating digital solutions that truly make a difference. Our journey began with a simple belief: every business deserves access to world-class technology that drives growth and innovation." data-fr="Fondée avec la vision de combler le fossé entre la technologie de pointe et le succès commercial, EximiumTech est née d'une passion pour créer des solutions numériques qui font vraiment la différence. Notre voyage a commencé avec une conviction simple : chaque entreprise mérite d'avoir accès à une technologie de classe mondiale qui stimule la croissance et l'innovation.">Founded with a vision to bridge the gap between cutting-edge technology and business success, EximiumTech emerged from a passion for creating digital solutions that truly make a difference. Our journey began with a simple belief: every business deserves access to world-class technology that drives growth and innovation.</p>
+                    
+                    <p data-en="Since our inception, we've successfully delivered 6+ comprehensive projects, each one strengthening our expertise and deepening our understanding of what businesses truly need in today's digital landscape. From startups to established enterprises, we've had the privilege of transforming ideas into powerful digital realities." data-fr="Depuis notre création, nous avons livré avec succès plus de 6 projets complets, chacun renforçant notre expertise et approfondissant notre compréhension de ce dont les entreprises ont vraiment besoin dans le paysage numérique d'aujourd'hui. Des startups aux entreprises établies, nous avons eu le privilège de transformer des idées en réalités numériques puissantes.">Since our inception, we've successfully delivered 6+ comprehensive projects, each one strengthening our expertise and deepening our understanding of what businesses truly need in today's digital landscape. From startups to established enterprises, we've had the privilege of transforming ideas into powerful digital realities.</p>
+                    
+                    <p data-en="Today, EximiumTech stands as a trusted partner for businesses seeking to leverage technology for competitive advantage. Our commitment to excellence, innovation, and client success continues to drive everything we do." data-fr="Aujourd'hui, EximiumTech se présente comme un partenaire de confiance pour les entreprises cherchant à tirer parti de la technologie pour un avantage concurrentiel. Notre engagement envers l'excellence, l'innovation et le succès client continue de guider tout ce que nous faisons.">Today, EximiumTech stands as a trusted partner for businesses seeking to leverage technology for competitive advantage. Our commitment to excellence, innovation, and client success continues to drive everything we do.</p>
+                </div>
+                <div class="story-image">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%234A90E2;stop-opacity:1' /><stop offset='100%' style='stop-color:%232E5BBA;stop-opacity:1' /></linearGradient></defs><rect width='400' height='300' fill='url(%23grad)'/><path d='M50 150 L150 100 L250 120 L350 80' stroke='white' stroke-width='4' fill='none' opacity='0.8'/><circle cx='50' cy='150' r='8' fill='white'/><circle cx='150' cy='100' r='8' fill='white'/><circle cx='250' cy='120' r='8' fill='white'/><circle cx='350' cy='80' r='8' fill='white'/><rect x='100' y='200' width='60' height='40' fill='white' opacity='0.3' rx='5'/><rect x='200' y='180' width='80' height='60' fill='white' opacity='0.3' rx='5'/><rect x='50' y='220' width='40' height='30' fill='white' opacity='0.3' rx='5'/></svg>" alt="Our Story">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values Section -->
+    <section class="section mission-values animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title" data-en="Mission & Values" data-fr="Mission & Valeurs">Mission & Values</h2>
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <div class="icon">🎯</div>
+                    <h3 data-en="Our Mission" data-fr="Notre Mission">Our Mission</h3>
+                    <p data-en="To empower businesses with innovative digital solutions that drive growth, enhance efficiency, and create lasting competitive advantages in an increasingly digital world." data-fr="Autonomiser les entreprises avec des solutions numériques innovantes qui stimulent la croissance, améliorent l'efficacité et créent des avantages concurrentiels durables dans un monde de plus en plus numérique.">To empower businesses with innovative digital solutions that drive growth, enhance efficiency, and create lasting competitive advantages in an increasingly digital world.</p>
+                </div>
+                <div class="mv-card">
+                    <div class="icon">💎</div>
+                    <h3 data-en="Our Values" data-fr="Nos Valeurs">Our Values</h3>
+                    <p data-en="Excellence in execution, innovation in approach, integrity in partnerships, and commitment to delivering solutions that exceed expectations while fostering long-term client relationships." data-fr="Excellence dans l'exécution, innovation dans l'approche, intégrité dans les partenariats, et engagement à livrer des solutions qui dépassent les attentes tout en favorisant des relations clients à long terme.">Excellence in execution, innovation in approach, integrity in partnerships, and commitment to delivering solutions that exceed expectations while fostering long-term client relationships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title" data-en="Meet Our Team" data-fr="Rencontrez Notre Équipe">Meet Our Team</h2>
+            <div class="team-intro">
+                <p data-en="Our diverse team of experts brings together years of experience in software development, AI/ML, design, and business strategy. We're united by our passion for technology and commitment to client success." data-fr="Notre équipe diversifiée d'experts rassemble des années d'expérience en développement logiciel, IA/ML, design et stratégie d'entreprise. Nous sommes unis par notre passion pour la technologie et notre engagement envers le succès client.">Our diverse team of experts brings together years of experience in software development, AI/ML, design, and business strategy. We're united by our passion for technology and commitment to client success.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">ET</div>
+                    <div class="member-name" data-en="EximiumTech Team" data-fr="Équipe EximiumTech">EximiumTech Team</div>
+                    <div class="member-role" data-en="Collective Excellence" data-fr="Excellence Collective">Collective Excellence</div>
+                    <p class="member-bio" data-en="Our collaborative approach combines individual expertise with collective innovation, ensuring every project benefits from diverse perspectives and specialized knowledge." data-fr="Notre approche collaborative combine l'expertise individuelle avec l'innovation collective, garantissant que chaque projet bénéficie de perspectives diversifiées et de connaissances spécialisées.">Our collaborative approach combines individual expertise with collective innovation, ensuring every project benefits from diverse perspectives and specialized knowledge.</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">🚀</div>
+                    <div class="member-name" data-en="Innovation Hub" data-fr="Hub d'Innovation">Innovation Hub</div>
+                    <div class="member-role" data-en="R&D Excellence" data-fr="Excellence R&D">R&D Excellence</div>
+                    <p class="member-bio" data-en="Dedicated to staying at the forefront of technology trends, exploring emerging solutions, and implementing cutting-edge approaches in every project we undertake." data-fr="Dédiés à rester à l'avant-garde des tendances technologiques, explorant des solutions émergentes et implémentant des approches de pointe dans chaque projet que nous entreprenons.">Dedicated to staying at the forefront of technology trends, exploring emerging solutions, and implementing cutting-edge approaches in every project we undertake.</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">🎨</div>
+                    <div class="member-name" data-en="Design Studio" data-fr="Studio de Design">Design Studio</div>
+                    <div class="member-role" data-en="UX/UI Specialists" data-fr="Spécialistes UX/UI">UX/UI Specialists</div>
+                    <p class="member-bio" data-en="Focused on creating intuitive, beautiful, and functional user experiences that delight users while achieving business objectives through thoughtful design." data-fr="Concentrés sur la création d'expériences utilisateur intuitives, belles et fonctionnelles qui ravissent les utilisateurs tout en atteignant les objectifs commerciaux grâce à un design réfléchi.">Focused on creating intuitive, beautiful, and functional user experiences that delight users while achieving business objectives through thoughtful design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Approach Section -->
+    <section class="section approach animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title" data-en="Our Approach" data-fr="Notre Approche">Our Approach</h2>
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <div class="approach-number">01</div>
+                    <h3 data-en="Discovery & Strategy" data-fr="Découverte & Stratégie">Discovery & Strategy</h3>
+                    <p data-en="We begin by understanding your business, goals, and challenges to create a tailored strategy." data-fr="Nous commençons par comprendre votre entreprise, vos objectifs et vos défis pour créer une stratégie sur mesure.">We begin by understanding your business, goals, and challenges to create a tailored strategy.</p>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-number">02</div>
+                    <h3 data-en="Design & Planning" data-fr="Design & Planification">Design & Planning</h3>
+                    <p data-en="Detailed planning and user-centered design ensure optimal user experience and functionality." data-fr="Une planification détaillée et un design centré sur l'utilisateur garantissent une expérience utilisateur et une fonctionnalité optimales.">Detailed planning and user-centered design ensure optimal user experience and functionality.</p>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-number">03</div>
+                    <h3 data-en="Development & Testing" data-fr="Développement & Tests">Development & Testing</h3>
+                    <p data-en="Agile development with continuous testing ensures high-quality, reliable solutions." data-fr="Le développement agile avec des tests continus garantit des solutions de haute qualité et fiables.">Agile development with continuous testing ensures high-quality, reliable solutions.</p>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-number">04</div>
+                    <h3 data-en="Launch & Support" data-fr="Lancement & Support">Launch & Support</h3>
+                    <p data-en="Smooth deployment and ongoing support ensure your solution continues to deliver value." data-fr="Un déploiement fluide et un support continu garantissent que votre solution continue d'apporter de la valeur.">Smooth deployment and ongoing support ensure your solution continues to deliver value.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="section technologies animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title" data-en="Technologies We Master" data-fr="Technologies Que Nous Maîtrisons">Technologies We Master</h2>
+            <div class="tech-categories">
+                <div class="tech-category">
+                    <h3><span class="icon">💻</span><span data-en="Frontend Development" data-fr="Développement Frontend">Frontend Development</span></h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">Javascript</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3><span class="icon">⚙️</span><span data-en="Backend Development" data-fr="Développement Backend">Backend Development</span></h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3><span class="icon">📱</span><span data-en="Mobile Development" data-fr="Développement Mobile">Mobile Development</span></h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">iOS (Swift)</span>
+                        <span class="tech-tag">Android (Kotlin)</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3><span class="icon">🤖</span><span data-en="AI & Machine Learning" data-fr="IA & Apprentissage Automatique">AI & Machine Learning</span></h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Hugging Face</span>
+                        <span class="tech-tag">MLOps</span>
+                    </div>
+                </div>
+                <!--<div class="tech-category">
+                    <h3><span class="icon">☁️</span><span data-en="Cloud & DevOps" data-fr="Cloud & DevOps">Cloud & DevOps</span></h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Azure</span>
+                        <span class="tech-tag">Google Cloud</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">CI/CD</span>
+                    </div>
+                </div>-->
+                <div class="tech-category">
+                    <h3><span class="icon">🗄️</span><span data-en="Databases" data-fr="Bases de Données">Databases</span></h3>
+                    <div class="tech-list">
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title" data-en="Ready to Work Together?" data-fr="Prêt à Travailler Ensemble ?">Ready to Work Together?</h2>
+            <div class="cta-content">
+                <p data-en="Let's discuss how our expertise and passion for innovation can help transform your business. We're excited to learn about your project and explore how we can contribute to your success." data-fr="Discutons de la façon dont notre expertise et notre passion pour l'innovation peuvent aider à transformer votre entreprise. Nous sommes impatients d'en savoir plus sur votre projet et d'explorer comment nous pouvons contribuer à votre succès.">Let's discuss how our expertise and passion for innovation can help transform your business. We're excited to learn about your project and explore how we can contribute to your success.</p>
+                <a href="{{url_for('contact')}}" class="btn" data-en="Start Your Project" data-fr="Commencer Votre Projet">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo">eximiumTech</div>
+                        <p data-en="Transforming businesses through digital innovation and cutting-edge technology solutions." data-fr="Transformer les entreprises grâce à l'innovation numérique et aux solutions technologiques de pointe.">Transforming businesses through digital innovation and cutting-edge technology solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Services" data-fr="Services">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="{{url_for('services')}}" data-en="Web Development" data-fr="Développement Web">Web Development</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="Mobile Apps" data-fr="Applications Mobiles">Mobile Apps</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="AI Solutions" data-fr="Solutions IA">AI Solutions</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="SaaS Development" data-fr="Développement SaaS">SaaS Development</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="Custom Software" data-fr="Logiciels Personnalisés">Custom Software</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Company" data-fr="Entreprise">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="{{url_for('about')}}" data-en="About Us" data-fr="À Propos">About Us</a></li>
+                        <li><a href="{{url_for('projects')}}" data-en="Portfolio" data-fr="Portfolio">Portfolio</a></li>
+                        <!--<li><a href="#" data-en="Careers" data-fr="Carrières">Careers</a></li>-->
+                        <li><a href="{{url_for('contact')}}" data-en="Contact" data-fr="Contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Connect With Us" data-fr="Nous Suivre">Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/eximiumtech" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:eximiumkj@gmail.com" class="social-link email">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                        <a href="tel:+213550450402" class="social-link phone">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong data-en="Email:" data-fr="Email :">Email:</strong> eximiumkj@gmail.com</p>
+                        <p><strong data-en="Phone:" data-fr="Téléphone :">Phone:</strong> +447385763427 | +213550450402</p>
+                        <p><strong data-en="Location:" data-fr="Localisation :">Location:</strong> <span data-en="Global Remote Services" data-fr="Services à Distance Mondiaux">Global Remote Services</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p data-en="© 2024 EximiumTech. All rights reserved." data-fr="© 2024 EximiumTech. Tous droits réservés.">© 2024 EximiumTech. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#" data-en="Privacy Policy" data-fr="Politique de Confidentialité">Privacy Policy</a>
+                        <a href="#" data-en="Terms of Service" data-fr="Conditions d'Utilisation">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle
+        let currentLang = 'en';
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            updateLanguage();
+        }
+        
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-en][data-fr]');
+            elements.forEach(el => {
+                el.textContent = el.getAttribute(`data-${currentLang}`);
+            });
+            
+            document.getElementById('langBtn').textContent = currentLang === 'en' ? 'FR' : 'EN';
+            document.documentElement.lang = currentLang;
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize
+        updateLanguage();
+    </script>
+</body>
+</html>

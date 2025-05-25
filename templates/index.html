@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EximiumTech - Digital Innovation Solutions</title>
+    <link rel="stylesheet" href="../static/css/main.css">
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">eximiumTech</div>
+            <ul class="nav-links">
+                <li><a href="{{url_for('index')}}" data-en="Home" data-fr="Accueil">Home</a></li>
+                <li><a href="{{url_for('services')}}" data-en="Services" data-fr="Services">Services</a></li>
+                <li><a href="{{url_for('about')}}" data-en="About" data-fr="À Propos">About</a></li>
+                <li><a href="{{url_for('contact')}}" data-en="Contact" data-fr="Contact">Contact</a></li>
+                <li><a href="{{url_for('projects')}}" data-en="Projects" data-fr="Projets">Projects</a></li>
+            </ul>
+            <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">FR</button>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-en="Digital Innovation Excellence" data-fr="Excellence en Innovation Numérique">Digital Innovation Excellence</h1>
+            <p data-en="Transforming businesses through cutting-edge websites, mobile apps, AI solutions, and SaaS platforms" data-fr="Transformez votre entreprise avec des sites web de pointe, applications mobiles, solutions IA et plateformes SaaS">Transforming businesses through cutting-edge websites, mobile apps, AI solutions, and SaaS platforms</p>
+            <div class="cta-buttons">
+                <a href="#services" class="btn btn-primary" data-en="Explore Services" data-fr="Découvrir nos Services">Explore Services</a>
+                <a href="#contact" class="btn btn-secondary" data-en="Get Started" data-fr="Commencer">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services animate-on-scroll" id="services">
+        <div class="container">
+            <h2 class="section-title" data-en="Our Services" data-fr="Nos Services">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3 data-en="Web Development" data-fr="Développement Web">Web Development</h3>
+                    <p data-en="Custom websites and web applications built with modern technologies and responsive design" data-fr="Sites web et applications web personnalisés construits avec des technologies modernes et un design responsive">Custom websites and web applications built with modern technologies and responsive design</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3 data-en="Mobile Apps" data-fr="Applications Mobiles">Mobile Apps</h3>
+                    <p data-en="Native and cross-platform mobile applications for iOS and Android with exceptional user experience" data-fr="Applications mobiles natives et multiplateformes pour iOS et Android avec une expérience utilisateur exceptionnelle">Native and cross-platform mobile applications for iOS and Android with exceptional user experience</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3 data-en="AI Solutions (MLaaS)" data-fr="Solutions IA (MLaaS)">AI Solutions (MLaaS)</h3>
+                    <p data-en="Machine Learning as a Service - Integrate powerful AI capabilities into your business processes" data-fr="Machine Learning as a Service - Intégrez des capacités IA puissantes dans vos processus métier">Machine Learning as a Service - Integrate powerful AI capabilities into your business processes</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3 data-en="SaaS Development" data-fr="Développement SaaS">SaaS Development</h3>
+                    <p data-en="Scalable Software as a Service platforms designed for growth and efficiency" data-fr="Plateformes Software as a Service évolutives conçues pour la croissance et l'efficacité">Scalable Software as a Service platforms designed for growth and efficiency</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3 data-en="Custom Software" data-fr="Logiciels Personnalisés">Custom Software</h3>
+                    <p data-en="Tailor-made software solutions to meet your specific business requirements and challenges" data-fr="Solutions logicielles sur mesure pour répondre à vos exigences et défis métier spécifiques">Tailor-made software solutions to meet your specific business requirements and challenges</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3 data-en="Technical Consulting" data-fr="Conseil Technique">Technical Consulting</h3>
+                    <p data-en="Expert guidance on technology strategy, architecture, and digital transformation initiatives" data-fr="Conseils d'experts sur la stratégie technologique, l'architecture et les initiatives de transformation numérique">Expert guidance on technology strategy, architecture, and digital transformation initiatives</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section animate-on-scroll" id="about">
+        <div class="container">
+            <div class="about">
+                <div class="about-content">
+                    <h2 data-en="About EximiumTech" data-fr="À Propos d'EximiumTech">About EximiumTech</h2>
+                    <p data-en="At EximiumTech, we specialize in delivering exceptional digital solutions that drive business growth. With a proven track record of successful projects, we combine technical expertise with creative innovation to transform your digital presence." data-fr="Chez EximiumTech, nous nous spécialisons dans la livraison de solutions numériques exceptionnelles qui stimulent la croissance des entreprises. Avec un historique prouvé de projets réussis, nous combinons expertise technique et innovation créative pour transformer votre présence numérique.">At EximiumTech, we specialize in delivering exceptional digital solutions that drive business growth. With a proven track record of successful projects, we combine technical expertise with creative innovation to transform your digital presence.</p>
+                    <p data-en="Our team of skilled developers, designers, and AI specialists work collaboratively to ensure every project exceeds expectations and delivers measurable results for our clients." data-fr="Notre équipe de développeurs, designers et spécialistes IA qualifiés travaille en collaboration pour s'assurer que chaque projet dépasse les attentes et livre des résultats mesurables pour nos clients.">Our team of skilled developers, designers, and AI specialists work collaboratively to ensure every project exceeds expectations and delivers measurable results for our clients.</p>
+                    <a href="#contact" class="btn btn-primary" data-en="Work With Us" data-fr="Travailler Avec Nous">Work With Us</a>
+                </div>
+                <div class="about-image">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%234A90E2;stop-opacity:1' /><stop offset='100%' style='stop-color:%232E5BBA;stop-opacity:1' /></linearGradient></defs><rect width='400' height='300' fill='url(%23grad)'/><circle cx='100' cy='80' r='30' fill='white' opacity='0.2'/><circle cx='300' cy='150' r='40' fill='white' opacity='0.3'/><circle cx='200' cy='220' r='25' fill='white' opacity='0.2'/><rect x='50' y='200' width='100' height='8' fill='white' opacity='0.4' rx='4'/><rect x='200' y='100' width='150' height='8' fill='white' opacity='0.4' rx='4'/><rect x='80' y='120' width='80' height='8' fill='white' opacity='0.4' rx='4'/></svg>" alt="About EximiumTech">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats animate-on-scroll">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 id="projects-count">6</h3>
+                    <p data-en="Projects Completed" data-fr="Projets Réalisés">Projects Completed</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="clients-count">100</h3>
+                    <p data-en="% Client Satisfaction" data-fr="% Satisfaction Client">% Client Satisfaction</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="experience-count">3</h3>
+                    <p data-en="Years of Excellence" data-fr="Années d'Excellence">Years of Excellence</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="services-count">5</h3>
+                    <p data-en="Core Services" data-fr="Services Principaux">Core Services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact animate-on-scroll" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-en="Ready to Start Your Project?" data-fr="Prêt à Commencer Votre Projet ?">Ready to Start Your Project?</h2>
+            <div class="contact-content">
+                <p data-en="Let's discuss how we can help transform your business with our innovative digital solutions. Contact us today for a free consultation." data-fr="Discutons de la façon dont nous pouvons aider à transformer votre entreprise avec nos solutions numériques innovantes. Contactez-nous aujourd'hui pour une consultation gratuite.">Let's discuss how we can help transform your business with our innovative digital solutions. Contact us today for a free consultation.</p>
+                <a href="{{url_for('contact')}}" class="btn btn-primary" data-en="Get In Touch" data-fr="Nous Contacter">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo">eximiumTech</div>
+                        <p data-en="Transforming businesses through digital innovation and cutting-edge technology solutions." data-fr="Transformer les entreprises grâce à l'innovation numérique et aux solutions technologiques de pointe.">Transforming businesses through digital innovation and cutting-edge technology solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Services" data-fr="Services">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="{{url_for('services')}}" data-en="Web Development" data-fr="Développement Web">Web Development</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="Mobile Apps" data-fr="Applications Mobiles">Mobile Apps</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="AI Solutions" data-fr="Solutions IA">AI Solutions</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="SaaS Development" data-fr="Développement SaaS">SaaS Development</a></li>
+                        <li><a href="{{url_for('services')}}" data-en="Custom Software" data-fr="Logiciels Personnalisés">Custom Software</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Company" data-fr="Entreprise">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="{{url_for('about')}}" data-en="About Us" data-fr="À Propos">About Us</a></li>
+                        <li><a href="{{url_for('projects')}}" data-en="Portfolio" data-fr="Portfolio">Portfolio</a></li>
+                        <!--<li><a href="#" data-en="Careers" data-fr="Carrières">Careers</a></li>-->
+                        <li><a href="{{url_for('contact')}}" data-en="Contact" data-fr="Contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Connect With Us" data-fr="Nous Suivre">Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/eximiumtech" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:eximiumkj@gmail.com" class="social-link email">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                        <a href="tel:+213550450402" class="social-link phone">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong data-en="Email:" data-fr="Email :">Email:</strong> eximiumkj@gmail.com</p>
+                        <p><strong data-en="Phone:" data-fr="Téléphone :">Phone:</strong> +447385763427 | +213550450402</p>
+                        <p><strong data-en="Location:" data-fr="Localisation :">Location:</strong> <span data-en="Global Remote Services" data-fr="Services à Distance Mondiaux">Global Remote Services</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p data-en="© 2024 EximiumTech. All rights reserved." data-fr="© 2024 EximiumTech. Tous droits réservés.">© 2024 EximiumTech. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#" data-en="Privacy Policy" data-fr="Politique de Confidentialité">Privacy Policy</a>
+                        <a href="#" data-en="Terms of Service" data-fr="Conditions d'Utilisation">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Language Toggle
+        let currentLang = 'en';
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            updateLanguage();
+        }
+        
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-en][data-fr]');
+            elements.forEach(el => {
+                el.textContent = el.getAttribute(`data-${currentLang}`);
+            });
+            
+            document.getElementById('langBtn').textContent = currentLang === 'en' ? 'FR' : 'EN';
+            document.documentElement.lang = currentLang;
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            updateCounter();
+        }
+
+        // Animate counters when stats section is visible
+        const statsSection = document.querySelector('.stats');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(document.getElementById('projects-count'), 6);
+                    animateCounter(document.getElementById('clients-count'), 100);
+                    animateCounter(document.getElementById('experience-count'), 3);
+                    animateCounter(document.getElementById('services-count'), 5);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Initialize
+        updateLanguage();
+    </script>
+</body>
+</html>
